@@ -2,18 +2,26 @@ import React from 'react'
 
 const inputStyle = {
   height: '50px',
+  width: '490px',
   margin: '5px',
   backgroundColor: '#eee',
   border: 'none',
-  textAlign: 'center'
+  textAlign: 'center',
+  padding: '0',
+  boxSizing: 'border-box'
 }
 
-const Input = () => {
+const Input = props => {
   return (
-    <input
-      style={inputStyle}
-      type="text"
-      value="Type Username + Enter" />
+    <form onSubmit={props.submit}>
+      <input
+        style={inputStyle}
+        type="text"
+        value={props.username}
+        onChange={props.change}
+        placeholder="Type Username + Enter"
+      />
+    </form>
   )
 }
 

@@ -5,4 +5,21 @@
   margin: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.Tile p {
+  margin: 0;
+}
+
+.number-display {
+  color: red;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.text-display {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
 }
