@@ -1,0 +1,8 @@
+.Tile {
+  height: 125px;
+  width: 125px;
+  background-color: yellow;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,9 +1,7 @@
 import React from 'react'
 import Input from '../Input/Input'
 import UserDisplay from '../UserDisplay/UserDisplay'
-import UserDetail from '../UserDetail/UserDetail'
-
-
+import UserGithubDetails from '../UserGithubDetails/UserGithubDetails'
 
 const cardStyle = {
   backgroundColor: 'yellow',
@@ -21,7 +19,7 @@ const Card = () => {
     <div style={cardStyle}>
       <Input />
       <UserDisplay />
-      <UserDetail />
+      <UserGithubDetails />
     </div>
   )
 }

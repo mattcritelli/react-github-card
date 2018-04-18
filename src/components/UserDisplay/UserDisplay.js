@@ -11,7 +11,9 @@ const userDisplayStyle = {
 
 const UserDisplay = () => {
   return (
-    <div style={userDisplayStyle}></div>
+    <div style={userDisplayStyle}>
+
+    </div>
   )
 }
 
