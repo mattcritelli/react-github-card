@@ -19,20 +19,37 @@ class Card extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: ''
+      username: '',
+      githubData: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(e, username) {
     e.preventDefault()
-    this.setState({username})
+    this.setState({
+      username,
+      githubData: {}
+    })
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { username, githubData } = { ...this.state }
+
+    if(nextState.username !== username || Object.keys(githubData).length === 0){
+      return true
+    }
   }
 
   componentDidUpdate() {
     axios.get(`https://api.github.com/users/${this.state.username}`)
     .then(response => {
-      console.log('response?', response)
+      let { githubData } = { ...this.state }
+      githubData = response
+      this.setState({githubData: githubData})
+    })
+    .catch(error => {
+      console.log('error in componentDidMount', error)
     })
   }
 
