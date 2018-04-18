@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Input from '../Input/Input'
 import UserDisplay from '../UserDisplay/UserDisplay'
 import UserGithubDetails from '../UserGithubDetails/UserGithubDetails'
+import axios from 'axios'
 
 const cardStyle = {
   backgroundColor: 'yellow',
@@ -21,18 +22,18 @@ class Card extends Component {
       username: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleSubmit = (e) => {
+  handleSubmit(e, username) {
     e.preventDefault()
-    // console.log('user submitted', this.state.username)
-    this.setState({username: e.target.value})
+    this.setState({username})
   }
 
-  handleChange(e) {
-    // console.log('user input', e.target.value)
-    this.setState({username: e.target.value})
+  componentDidUpdate() {
+    axios.get(`https://api.github.com/users/${this.state.username}`)
+    .then(response => {
+      console.log('response?', response)
+    })
   }
 
   render() {
@@ -40,7 +41,6 @@ class Card extends Component {
       <div style={cardStyle}>
         <Input
           name={this.state.username}
-          change={this.handleChange}
           submit={this.handleSubmit}
         />
         <UserDisplay />
